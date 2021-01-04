@@ -1,0 +1,21 @@
+{
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "eslint.options": {
+        "extensions": [
+            ".js",
+            ".ts",
+            ".tsx"
+        ]
+    },
+    "eslint.validate": [
+        "javascript",
+        "typescript",
+        "typescriptreact"
+    ],
+    "prettier.singleQuote": true,
+    "prettier.semi": false,
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "files.eol": "\n"
+}
