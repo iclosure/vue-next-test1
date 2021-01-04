@@ -1,0 +1,16 @@
+{
+  "eslintIntegration": true,
+  "stylelintIntegration": true,
+  "singleQuote": false,
+  "trailingComma": "none",
+  "semi": true,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "printWidth": 80,
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": { "parser": "json" }
+    }
+  ]
+}

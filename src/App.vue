@@ -1,30 +1,43 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld :msg="'Hello Vue ' + vueVersion + ' + Vite'" @hello="hello" />
+  <router-view></router-view>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import HelloWorld from "@/components/HelloWorld.vue";
+import {
+  defineComponent,
+  provide,
+  reactive,
+  ref,
+  toRefs,
+  version as VueVersion
+} from "vue";
 
-#nav {
-  padding: 30px;
+export default defineComponent({
+  name: "App",
+  components: {
+    HelloWorld
+  },
+  setup() {
+    //
+    const state = reactive({
+      vueVersion: VueVersion
+    });
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    const hello = (msg: string) => {
+      console.log("App:", msg);
+    };
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+    //
+    const appName = ref("oo-ooo");
+    provide("appName", appName);
+
+    return {
+      ...toRefs(state),
+      hello
+    };
   }
-}
-</style>
+});
+</script>
