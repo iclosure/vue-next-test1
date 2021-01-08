@@ -1,5 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <HelloWorld :msg="'Hello Vue ' + vueVersion + ' + Vite'" @hello="hello" />
   <router-view></router-view>
 </template>
@@ -21,16 +21,14 @@ export default defineComponent({
     HelloWorld
   },
   setup() {
-    //
     const state = reactive({
       vueVersion: VueVersion
     });
 
-    const hello = (msg: string) => {
+    function hello(msg: unknown): any {
       console.log("App:", msg);
-    };
+    }
 
-    //
     const appName = ref("oo-ooo");
     provide("appName", appName);
 

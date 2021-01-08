@@ -16,6 +16,7 @@ import {
   nextTick,
   reactive,
   Ref,
+  SetupContext,
   toRefs
 } from "vue";
 import { useStore } from "vuex";
@@ -26,7 +27,7 @@ export default defineComponent({
     msg: String
   },
   emits: ["hello"],
-  setup(props, { emit }) {
+  setup(props, ctx: SetupContext) {
     const store = useStore();
     // state
     const state = reactive({
@@ -35,7 +36,7 @@ export default defineComponent({
         store.state.counter++;
         await nextTick();
         //TEST
-        emit("hello", "world");
+        ctx.emit("hello", "world");
       }
     });
 

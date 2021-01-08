@@ -7,6 +7,8 @@ declare module "*.vue" {
 declare module "*.js";
 declare module "*.scss";
 
+declare module "vue-hooks" {}
+
 // Date
 declare interface Date {
   Format(format: string): string;
