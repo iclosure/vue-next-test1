@@ -3,7 +3,13 @@
   <el-button type="success" @click="gotoAbout">Got to About Page</el-button>
   <j-button type="warning" name="what" @click="queryData"></j-button>
   <el-button icon="el-icon-user" @click="gotoTest">Go to Test Page</el-button>
+  <j-button type="info" name="Show Modal" @click="showModal"></j-button>
   <div class="alert alert-warning">sss</div>
+  <a-modal v-model:visible="dialogVisible" title="Basic Modal" @ok="handleOk">
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+  </a-modal>
 </template>
 
 <script lang="ts">
@@ -17,8 +23,9 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const router = useRouter();
-    const state = reactive({
-      name: "Home Page"
+    const initData = reactive({
+      name: "Home Page",
+      dialogVisible: false
     });
     const gotoAbout = () => {
       router.push("/about");
@@ -44,11 +51,21 @@ export default defineComponent({
       router.push("/test");
     };
 
+    function showModal(): void {
+      initData.dialogVisible = true;
+    }
+
+    function handleOk(): void {
+      console.log("==== handleOk");
+    }
+
     return {
-      ...toRefs(state),
+      ...toRefs(initData),
       gotoAbout,
       queryData,
-      gotoTest
+      gotoTest,
+      showModal,
+      handleOk
     };
   }
 });
